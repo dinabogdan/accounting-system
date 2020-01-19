@@ -1,4 +1,4 @@
-package com.freesoft.savings
+package com.freesoft.savings.infrastructure
 
 import com.typesafe.config.ConfigFactory
 

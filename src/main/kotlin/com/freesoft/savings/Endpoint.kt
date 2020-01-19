@@ -1,5 +1,6 @@
 package com.freesoft.savings
 
+import com.freesoft.savings.infrastructure.serverConfig
 import org.http4k.core.Method
 import org.http4k.core.Response
 import org.http4k.core.Status.Companion.OK
@@ -15,7 +16,8 @@ fun main() {
         .PrintRequestAndResponse()
         .then(
             routes(
-                "/" bind Method.GET to { Response(OK).body("Home") }
+                "/" bind Method.GET to { Response(OK).body("Home") },
+                "/savings" bind Method.POST to { request -> Response(OK) }
             )
         ).asServer(Netty(serverConfig.getInt("port"))).start()
 }
