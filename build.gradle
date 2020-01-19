@@ -39,8 +39,12 @@ dependencies {
     implementation("com.sun.xml.bind:jaxb-core:$jaxbVersion")
     implementation("com.sun.xml.bind:jaxb-impl:$jaxbVersion")
 
+    implementation("org.jetbrains.exposed:exposed:0.13.6")
+    implementation("com.h2database:h2:1.4.198")
+
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
     implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:$jacksonVersion")
 
     implementation "io.arrow-kt:arrow-core:0.10.4"
     implementation "io.arrow-kt:arrow-syntax:0.10.4"

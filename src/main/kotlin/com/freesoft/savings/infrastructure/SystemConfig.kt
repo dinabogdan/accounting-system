@@ -7,4 +7,6 @@ val systemConfig = ConfigFactory.load("application.conf")
 
 val logConfig = "log4j2.yaml"
 
+val dbConfig = systemConfig.getConfig("database")
+
 val serverConfig = systemConfig.getConfig("server")

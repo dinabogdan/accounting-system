@@ -77,8 +77,8 @@ data class CurrentAccount(
     override val accountHolder: AccountHolder,
     override val name: AccountName,
     override val state: AccountState,
-    override val balance: Balance?,
-    override val accruedInterest: AccruedInterest?,
+    override val balance: Balance? = null,
+    override val accruedInterest: AccruedInterest? = null,
     override val interestPmtPoint: InterestPaymentPoint,
     override val currencyCode: CurrencyCode
 ) : Account(
@@ -99,7 +99,7 @@ data class RegularSavingsAccount(
     override val accountHolder: AccountHolder,
     override val name: AccountName,
     override val state: AccountState,
-    override val balance: Balance?,
+    override val balance: Balance? = null,
     override val accruedInterest: AccruedInterest?,
     override val interestPmtPoint: InterestPaymentPoint,
     override val currencyCode: CurrencyCode
@@ -121,7 +121,7 @@ data class FixedDepositAccount(
     override val accountHolder: AccountHolder,
     override val name: AccountName,
     override val state: AccountState,
-    override val balance: Balance?,
+    override val balance: Balance? = null,
     override val accruedInterest: AccruedInterest?,
     override val maturityDate: MaturityDate,
     override val interestPmtPoint: InterestPaymentPoint,
@@ -144,7 +144,7 @@ data class SavingsPlanAccount(
     override val accountHolder: AccountHolder,
     override val name: AccountName,
     override val state: AccountState,
-    override val balance: Balance?,
+    override val balance: Balance? = null,
     override val accruedInterest: AccruedInterest?,
     override val maturityDate: MaturityDate,
     override val interestPmtPoint: InterestPaymentPoint,
@@ -167,7 +167,7 @@ data class InvestorAccount(
     override val accountHolder: AccountHolder,
     override val name: AccountName,
     override val state: AccountState,
-    override val balance: Balance?,
+    override val balance: Balance? = null,
     override val accruedInterest: AccruedInterest?,
     override val interestPmtPoint: InterestPaymentPoint,
     override val currencyCode: CurrencyCode
