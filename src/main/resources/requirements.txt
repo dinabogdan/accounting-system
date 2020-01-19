@@ -1,0 +1,4 @@
+Write an endpoint that will allow an existing user to open a savings account.
+The account can only be opened between 8 AM and 5 PM and the user can have only one savings account.
+
+The data can be stored however you see fit (e.g. database, in memory, file) and you can use any JVM language and framework.
