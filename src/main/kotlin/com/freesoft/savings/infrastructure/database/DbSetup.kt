@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 object Accounts : Table("accounts") {
     val id = varchar("id", 255).primaryKey()
-    val holder = varchar("holder", 255).uniqueIndex()
+    val holder = varchar("holder", 255).uniqueIndex().references(AccountHolders.accHolderKey)
     val name = varchar("name", 255)
     val type = varchar("type", 255)
     val state = varchar("state", 255)
