@@ -117,5 +117,4 @@ data class OpenSavingAccountReq(
             AccHolderType.GROUP -> GroupHolder(AccountHolderKey(this.accHolderKey))
         }
     }
-
 }

@@ -1,6 +1,5 @@
 package com.freesoft.savings.application
 
-import com.freesoft.savings.domain.Account
 import com.freesoft.savings.domain.Command
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,10 +14,11 @@ data class OpenSavingAccount(
         get() = "Ope"
 
     override fun execute(system: AccountingFreesoftSystem) {
+        val account = openSavingAccountReq.toAccount()
         system.txManager.tx {
-            this.addAccount(openSavingAccountReq.toAccount())
+            val holderKey = addHolder(account.accountHolder)
+            addAccount(account, holderKey)
         }
-        logger.info("########## It's saved!")
     }
 }
 
