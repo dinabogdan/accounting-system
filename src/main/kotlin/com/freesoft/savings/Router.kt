@@ -13,6 +13,7 @@ import com.freesoft.savings.infrastructure.error.HttpExceptionHandler
 import com.freesoft.savings.infrastructure.error.anErrorResponse
 import com.freesoft.savings.infrastructure.serverConfig
 import org.http4k.core.*
+import org.http4k.core.Method.POST
 import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.ServerFilters
 import org.http4k.routing.RoutingHttpHandler
@@ -24,7 +25,6 @@ class Router(
 ) {
 
     val openSavingAccountReqLens = Body.auto<OpenSavingAccountReq>().toLens()
-
 
 
     private val db = createDb(dbConfig.getString("url"), dbConfig.getString("driver"))
@@ -39,11 +39,10 @@ class Router(
             })
             .then(
                 routes(
-                    "/api/savings" bind Method.POST to { request ->
+                    "/api/savings" bind POST to { request ->
                         OpenSavingAccount(openSavingAccountReqLens(request)).execute(system)
                         Response(Status.OK)
                     }
                 )
             )
-
 }
