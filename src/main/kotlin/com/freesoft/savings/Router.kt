@@ -1,9 +1,9 @@
 package com.freesoft.savings
 
+import com.freesoft.savings.application.AccountingFreesoftSystem
 import com.freesoft.savings.application.OpenSavingAccount
 import com.freesoft.savings.application.OpenSavingAccountReq
 import com.freesoft.savings.application.handler.CreateAccountHandler
-import com.freesoft.savings.domain.system.FreesoftSystem
 import com.freesoft.savings.infrastructure.CustomJackson.auto
 import com.freesoft.savings.infrastructure.error.HttpExceptionHandler
 import com.freesoft.savings.infrastructure.error.anErrorResponse
@@ -24,7 +24,7 @@ class Router(
 
     val openSavingAccountReqLens = Body.auto<OpenSavingAccountReq>().toLens()
 
-    operator fun invoke(system: FreesoftSystem): RoutingHttpHandler =
+    operator fun invoke(system: AccountingFreesoftSystem): RoutingHttpHandler =
         HttpExceptionHandler()
             .then(DebuggingFilters.PrintRequestAndResponse())
             .then(ServerFilters.CatchLensFailure { failureFn ->

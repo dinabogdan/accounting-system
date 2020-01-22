@@ -7,6 +7,7 @@ import com.freesoft.savings.domain.system.FreesoftSystem
 import com.freesoft.savings.infrastructure.database.AccountHolders
 import com.freesoft.savings.infrastructure.database.Accounts
 import com.freesoft.savings.infrastructure.database.TransactionManagerImpl
+import org.http4k.server.Http4kServer
 import org.http4k.server.Jetty
 import org.http4k.server.asServer
 import org.jetbrains.exposed.sql.Database
@@ -14,14 +15,14 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.slf4j.LoggerFactory
 
-interface AccountingFreesoftSystem : FreesoftSystem {
-    override val txManager: TransactionManager<Repository>
 
-}
+/**
+ * The base class which should be extended by all system implementation.
+ */
 
-data class SavingsAccountFreesoftSystem(
-    private val configuration: Configuration
-) : AccountingFreesoftSystem {
+abstract class AccountingFreesoftSystem(
+    open val configuration: Configuration
+) : FreesoftSystem {
 
     override val txManager: TransactionManager<Repository> by lazy {
         val db = initDb(configuration.dbUrl, configuration.dbDriver)
@@ -37,13 +38,23 @@ data class SavingsAccountFreesoftSystem(
         return database
     }
 
-    private val logger = LoggerFactory.getLogger(SavingsAccountFreesoftSystem::class.java)
+    private val logger = LoggerFactory.getLogger(AccountingFreesoftSystem::class.java)
+
+    override infix fun `start as server`(router: Router): Http4kServer {
+        val server = router(this).asServer(Jetty(configuration.serverPort)).start()
+
+        logger.info("Server started on port ${configuration.serverPort} by system $name")
+
+        return server
+    }
+
+}
+
+data class SavingsAccountFreesoftSystem(
+    override val configuration: Configuration
+) : AccountingFreesoftSystem(configuration) {
 
     override val name: String
         get() = "Production Savings Account FreesoftSystem"
 
-    override infix fun `start as server`(router: Router) {
-        router(this).asServer(Jetty(configuration.serverPort)).start()
-        logger.info("Server started on port ${configuration.serverPort}")
-    }
 }
