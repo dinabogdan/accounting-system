@@ -1,5 +1,7 @@
 package com.freesoft.savings.domain
 
+import com.freesoft.savings.domain.system.FreesoftSystem
+
 interface Action<S : FreesoftSystem, T> {
 
     val description: String

@@ -8,7 +8,7 @@ interface CreateAccountHandler {
 
 class CreateAccountHandlerImpl : CreateAccountHandler {
     override fun invoke(openSavingAccountReq: OpenSavingAccountReq) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 }

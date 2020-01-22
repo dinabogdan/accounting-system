@@ -1,10 +1,7 @@
 package com.freesoft.savings.infrastructure.database
 
 import org.jetbrains.exposed.dao.IntIdTable
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.transactions.transaction
 
 object Accounts : Table("accounts") {
     val id = varchar("id", 255).primaryKey()
@@ -22,13 +19,4 @@ object Accounts : Table("accounts") {
 object AccountHolders : IntIdTable() {
     val accHolderType = varchar("acc_holder_type", 255)
     val accHolderKey = varchar("acc_holder_key", 255).uniqueIndex()
-}
-
-fun createDb(url: String, driver: String): Database {
-    val database = Database.connect(url, driver = driver)
-    transaction(database) {
-        SchemaUtils.create(AccountHolders)
-        SchemaUtils.create(Accounts)
-    }
-    return database
 }
