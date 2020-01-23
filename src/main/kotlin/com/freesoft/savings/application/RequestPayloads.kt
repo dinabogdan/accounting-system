@@ -29,6 +29,10 @@ enum class Currency {
     EUR, USD, RON
 }
 
+data class RetrieveSavingAccountReq(
+    val accHolderKey: String
+)
+
 data class OpenSavingAccountReq(
     val accHolderType: AccHolderType,
     val accHolderKey: String,

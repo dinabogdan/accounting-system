@@ -7,11 +7,8 @@ import com.freesoft.savings.application.handler.CreateAccountHandler
 import com.freesoft.savings.infrastructure.CustomJackson.auto
 import com.freesoft.savings.infrastructure.error.HttpExceptionHandler
 import com.freesoft.savings.infrastructure.error.anErrorResponse
-import org.http4k.core.Body
+import org.http4k.core.*
 import org.http4k.core.Method.POST
-import org.http4k.core.Response
-import org.http4k.core.Status
-import org.http4k.core.then
 import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.ServerFilters
 import org.http4k.routing.RoutingHttpHandler
@@ -19,7 +16,7 @@ import org.http4k.routing.bind
 import org.http4k.routing.routes
 
 class Router(
-    val createAccountHandler: CreateAccountHandler
+    val createAccount: CreateAccountHandler
 ) {
 
     val openSavingAccountReqLens = Body.auto<OpenSavingAccountReq>().toLens()
@@ -32,10 +29,12 @@ class Router(
             })
             .then(
                 routes(
-                    "/api/savings" bind POST to { request ->
-                        OpenSavingAccount(openSavingAccountReqLens(request)).execute(system)
-                        Response(Status.OK)
-                    }
+                    "/api/accounts" bind POST to system.openSavingAccount()
                 )
             )
+
+    private fun AccountingFreesoftSystem.openSavingAccount() = { request: Request ->
+        createAccount(openSavingAccountReqLens(request)).execute(this)
+        Response(Status.OK)
+    }
 }

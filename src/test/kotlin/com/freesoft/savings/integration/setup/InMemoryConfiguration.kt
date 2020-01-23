@@ -1,4 +1,4 @@
-package com.freesoft.savings.integration
+package com.freesoft.savings.integration.setup
 
 import com.freesoft.savings.domain.system.Configuration
 import com.typesafe.config.ConfigFactory

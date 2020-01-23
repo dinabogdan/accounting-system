@@ -4,7 +4,7 @@ import com.freesoft.savings.domain.Account
 import com.freesoft.savings.domain.AccountHolder
 
 interface Repository {
-    fun getAccountByHolderKey(key: String): Boolean
+    fun getAccountByHolderKey(key: String): Account?
 
     fun addAccount(account: Account, holderKey: String)
 

@@ -1,4 +1,4 @@
-package com.freesoft.savings.integration
+package com.freesoft.savings.integration.setup
 
 import com.freesoft.savings.Router
 import com.freesoft.savings.application.AccountingFreesoftSystem
@@ -21,7 +21,8 @@ class InMemoryApplicationSystem(
 
 class Application : Closeable {
 
-    private val system = InMemoryApplicationSystem(InMemoryAppConfiguration())
+    private val system =
+        InMemoryApplicationSystem(InMemoryAppConfiguration())
 
     private val router = Router(CreateAccountHandlerImpl())
 
