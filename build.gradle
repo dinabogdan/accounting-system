@@ -10,6 +10,7 @@ version '1.0-SNAPSHOT'
 def log4jVersion = "2.12.1"
 def jaxbVersion = "2.3.0"
 def jacksonVersion = "2.10.0"
+def http4kVersion = "3.196.0"
 
 repositories {
 
@@ -25,9 +26,10 @@ repositories {
 
 dependencies {
 
-    implementation "org.http4k:http4k-core:3.196.0"
-    implementation "org.http4k:http4k-server-jetty:3.196.0"
-    implementation "org.http4k:http4k-format-jackson:3.196.0"
+    implementation "org.http4k:http4k-core:$http4kVersion"
+    implementation "org.http4k:http4k-server-jetty:$http4kVersion"
+    implementation "org.http4k:http4k-format-jackson:$http4kVersion"
+    implementation "org.http4k:http4k-client-apache:$http4kVersion"
 
     implementation "com.typesafe:config:1.4.0"
 
@@ -54,6 +56,10 @@ dependencies {
 
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
     testImplementation("io.mockk:mockk:1.9.3")
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
+
 }
 
 compileKotlin {
@@ -64,4 +70,8 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+test {
+    useJUnitPlatform()
 }

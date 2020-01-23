@@ -21,8 +21,9 @@ class InMemoryApplicationSystem(
 
 class Application : Closeable {
 
-    private val system =
-        InMemoryApplicationSystem(InMemoryAppConfiguration())
+    val config = InMemoryAppConfiguration()
+
+    private val system = InMemoryApplicationSystem(config)
 
     private val router = Router(CreateAccountHandlerImpl())
 
