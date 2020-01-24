@@ -20,6 +20,8 @@ val mapper: ObjectMapper = KotlinModule()
     .configure(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS, false)
     .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
 
+fun String.toJson(): JsonNode = mapper.readTree(this)
+
 object CustomJackson : ConfigurableJackson(mapper) {
     override fun decimal(value: JsonNode): BigDecimal {
         return value.decimalValue()

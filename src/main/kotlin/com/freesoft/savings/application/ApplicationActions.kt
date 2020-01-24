@@ -39,8 +39,8 @@ data class RetrieveAccount(
 
     override fun execute(system: FreesoftSystem): Account {
         logger.info(description)
-        system.txManager.tx {
-            TODO()
+        return system.txManager.tx {
+            getAccountByHolderKey(retrieveSavingAccountReq.accHolderKey)!!
         }
     }
 }

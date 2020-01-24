@@ -3,6 +3,7 @@ package com.freesoft.savings.integration.setup
 import com.freesoft.savings.Router
 import com.freesoft.savings.application.AccountingFreesoftSystem
 import com.freesoft.savings.application.handler.CreateAccountHandlerImpl
+import com.freesoft.savings.application.handler.RetrieveAccountHandlerImpl
 import com.freesoft.savings.domain.system.Configuration
 import io.kotlintest.extensions.TestListener
 import org.http4k.server.Http4kServer
@@ -25,7 +26,10 @@ class Application : Closeable {
 
     private val system = InMemoryApplicationSystem(config)
 
-    private val router = Router(CreateAccountHandlerImpl())
+    private val router = Router(
+        CreateAccountHandlerImpl(),
+        RetrieveAccountHandlerImpl()
+    )
 
     private val server: Http4kServer
 

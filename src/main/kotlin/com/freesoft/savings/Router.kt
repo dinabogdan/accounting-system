@@ -29,7 +29,6 @@ class Router(
     private val accHolderKeyLens = Path.nonEmptyString().map(::RetrieveSavingAccountReq).of("accHolderKey")
     private val accountResponseLens = Body.auto<AccountResponse>().toLens()
 
-
     operator fun invoke(system: AccountingFreesoftSystem): RoutingHttpHandler =
         HttpExceptionHandler()
             .then(DebuggingFilters.PrintRequestAndResponse())
