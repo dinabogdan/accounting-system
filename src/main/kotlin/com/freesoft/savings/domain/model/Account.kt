@@ -1,4 +1,4 @@
-package com.freesoft.savings.domain
+package com.freesoft.savings.domain.model
 
 import java.math.BigDecimal
 import java.time.LocalDateTime

@@ -32,6 +32,7 @@ class Router(
     operator fun invoke(system: AccountingFreesoftSystem): RoutingHttpHandler =
         HttpExceptionHandler()
             .then(DebuggingFilters.PrintRequestAndResponse())
+            .then(WorkingTimeFilter.Check(system))
             .then(ServerFilters.CatchLensFailure { failureFn ->
                 anErrorResponse(Status.BAD_REQUEST, listOf(failureFn.cause?.message ?: "Unexpected error"))
             })

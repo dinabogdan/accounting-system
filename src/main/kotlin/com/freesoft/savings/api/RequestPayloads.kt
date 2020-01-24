@@ -1,6 +1,6 @@
 package com.freesoft.savings.api
 
-import com.freesoft.savings.domain.*
+import com.freesoft.savings.domain.model.*
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
@@ -117,8 +117,16 @@ data class OpenSavingAccountReq(
 
     private fun anAccountHolder(): AccountHolder {
         return when (this.accHolderType) {
-            AccHolderType.CLIENT -> ClientHolder(AccountHolderKey(this.accHolderKey))
-            AccHolderType.GROUP -> GroupHolder(AccountHolderKey(this.accHolderKey))
+            AccHolderType.CLIENT -> ClientHolder(
+                AccountHolderKey(
+                    this.accHolderKey
+                )
+            )
+            AccHolderType.GROUP -> GroupHolder(
+                AccountHolderKey(
+                    this.accHolderKey
+                )
+            )
         }
     }
 }

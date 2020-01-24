@@ -1,6 +1,6 @@
 package com.freesoft.savings.application
 
-import com.freesoft.savings.domain.*
+import com.freesoft.savings.domain.model.*
 import com.freesoft.savings.domain.repository.Repository
 import com.freesoft.savings.infrastructure.database.AccountHolders
 import com.freesoft.savings.infrastructure.database.Accounts
@@ -63,10 +63,16 @@ private fun ResultRow.toInvestorAccount(): InvestorAccount {
         id = UUID.fromString(this[Accounts.id]),
         currencyCode = CurrencyCode.valueOf(this[Accounts.currencyCode]),
         interestPmtPoint = InterestPaymentPoint.valueOf(this[Accounts.interestPmtPoint]),
-        accruedInterest = AccruedInterest(this[Accounts.accruedInterest] ?: BigDecimal.ZERO),
+        accruedInterest = AccruedInterest(
+            this[Accounts.accruedInterest] ?: BigDecimal.ZERO
+        ),
         state = AccountState.valueOf(this[Accounts.state]),
         name = AccountName(this[Accounts.name]),
-        accountHolder = ClientHolder(AccountHolderKey(this[Accounts.holder])),
+        accountHolder = ClientHolder(
+            AccountHolderKey(
+                this[Accounts.holder]
+            )
+        ),
         balance = Balance(this[Accounts.balance] ?: BigDecimal.ZERO)
     )
 }
@@ -76,10 +82,16 @@ private fun ResultRow.toSavingsPlanAccount(): SavingsPlanAccount {
         id = UUID.fromString(this[Accounts.id]),
         currencyCode = CurrencyCode.valueOf(this[Accounts.currencyCode]),
         interestPmtPoint = InterestPaymentPoint.valueOf(this[Accounts.interestPmtPoint]),
-        accruedInterest = AccruedInterest(this[Accounts.accruedInterest] ?: BigDecimal.ZERO),
+        accruedInterest = AccruedInterest(
+            this[Accounts.accruedInterest] ?: BigDecimal.ZERO
+        ),
         state = AccountState.valueOf(this[Accounts.state]),
         name = AccountName(this[Accounts.name]),
-        accountHolder = ClientHolder(AccountHolderKey(this[Accounts.holder])),
+        accountHolder = ClientHolder(
+            AccountHolderKey(
+                this[Accounts.holder]
+            )
+        ),
         balance = Balance(this[Accounts.balance] ?: BigDecimal.ZERO),
         maturityDate = MaturityDate(LocalDateTime.parse(this[Accounts.maturityDate]))
     )
@@ -90,10 +102,16 @@ private fun ResultRow.toFixedDeposit(): FixedDepositAccount {
         id = UUID.fromString(this[Accounts.id]),
         currencyCode = CurrencyCode.valueOf(this[Accounts.currencyCode]),
         interestPmtPoint = InterestPaymentPoint.valueOf(this[Accounts.interestPmtPoint]),
-        accruedInterest = AccruedInterest(this[Accounts.accruedInterest] ?: BigDecimal.ZERO),
+        accruedInterest = AccruedInterest(
+            this[Accounts.accruedInterest] ?: BigDecimal.ZERO
+        ),
         state = AccountState.valueOf(this[Accounts.state]),
         name = AccountName(this[Accounts.name]),
-        accountHolder = ClientHolder(AccountHolderKey(this[Accounts.holder])),
+        accountHolder = ClientHolder(
+            AccountHolderKey(
+                this[Accounts.holder]
+            )
+        ),
         balance = Balance(this[Accounts.balance] ?: BigDecimal.ZERO),
         maturityDate = MaturityDate(LocalDateTime.parse(this[Accounts.maturityDate]))
     )
@@ -104,10 +122,16 @@ private fun ResultRow.toRegularSavings(): RegularSavingsAccount {
         id = UUID.fromString(this[Accounts.id]),
         currencyCode = CurrencyCode.valueOf(this[Accounts.currencyCode]),
         interestPmtPoint = InterestPaymentPoint.valueOf(this[Accounts.interestPmtPoint]),
-        accruedInterest = AccruedInterest(this[Accounts.accruedInterest] ?: BigDecimal.ZERO),
+        accruedInterest = AccruedInterest(
+            this[Accounts.accruedInterest] ?: BigDecimal.ZERO
+        ),
         state = AccountState.valueOf(this[Accounts.state]),
         name = AccountName(this[Accounts.name]),
-        accountHolder = ClientHolder(AccountHolderKey(this[Accounts.holder])),
+        accountHolder = ClientHolder(
+            AccountHolderKey(
+                this[Accounts.holder]
+            )
+        ),
         balance = Balance(this[Accounts.balance] ?: BigDecimal.ZERO)
     )
 }
@@ -117,10 +141,16 @@ private fun ResultRow.toCurrentAccount(): CurrentAccount {
         id = UUID.fromString(this[Accounts.id]),
         currencyCode = CurrencyCode.valueOf(this[Accounts.currencyCode]),
         interestPmtPoint = InterestPaymentPoint.valueOf(this[Accounts.interestPmtPoint]),
-        accruedInterest = AccruedInterest(this[Accounts.accruedInterest] ?: BigDecimal.ZERO),
+        accruedInterest = AccruedInterest(
+            this[Accounts.accruedInterest] ?: BigDecimal.ZERO
+        ),
         state = AccountState.valueOf(this[Accounts.state]),
         name = AccountName(this[Accounts.name]),
-        accountHolder = ClientHolder(AccountHolderKey(this[Accounts.holder])),
+        accountHolder = ClientHolder(
+            AccountHolderKey(
+                this[Accounts.holder]
+            )
+        ),
         balance = Balance(this[Accounts.balance] ?: BigDecimal.ZERO)
     )
 }
