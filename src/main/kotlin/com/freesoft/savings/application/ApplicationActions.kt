@@ -1,5 +1,7 @@
 package com.freesoft.savings.application
 
+import com.freesoft.savings.api.OpenSavingAccountReq
+import com.freesoft.savings.api.RetrieveSavingAccountReq
 import com.freesoft.savings.domain.Account
 import com.freesoft.savings.domain.Command
 import com.freesoft.savings.domain.Query

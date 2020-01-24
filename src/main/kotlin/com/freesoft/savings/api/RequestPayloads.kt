@@ -1,4 +1,4 @@
-package com.freesoft.savings.application
+package com.freesoft.savings.api
 
 import com.freesoft.savings.domain.*
 import java.math.BigDecimal

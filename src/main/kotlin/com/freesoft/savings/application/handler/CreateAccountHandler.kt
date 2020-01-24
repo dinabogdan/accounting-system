@@ -1,7 +1,7 @@
 package com.freesoft.savings.application.handler
 
 import com.freesoft.savings.application.OpenSavingAccount
-import com.freesoft.savings.application.OpenSavingAccountReq
+import com.freesoft.savings.api.OpenSavingAccountReq
 
 interface CreateAccountHandler {
     operator fun invoke(openSavingAccountReq: OpenSavingAccountReq): OpenSavingAccount

@@ -35,13 +35,26 @@ class OpenSavingsAccountTest : BaseTest() {
                 .header("Content-Type", "application/json")
                 .body(requestPayload)
 
-            When("Executing it") {
+            When("Sending it") {
 
                 val response: Response = send(request)
 
                 Then("Create a saving account") {
 
                     response.status shouldBe Status.OK
+
+                }
+
+            }
+
+        }
+
+        Given("2. A valid OpenSavingAccountReq payload that is send to server") {
+
+            When("RetrieveAccount by holder key") {
+
+                Then("Return the expected account") {
+
 
                 }
 
