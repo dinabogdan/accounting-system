@@ -12,7 +12,7 @@ object WorkingTimeFilter {
     object Check {
         operator fun invoke(system: AccountingFreesoftSystem): Filter = RequestFilters.Tap {
             val currentHour = LocalDateTime.now().hour
-            if (currentHour >= system.configuration.startHour && currentHour <= system.configuration.endHour) {
+            if (currentHour <= system.configuration.startHour || currentHour >= system.configuration.endHour) {
                 throw HttpException(Status.BAD_REQUEST, "Not in working time!")
             }
         }
