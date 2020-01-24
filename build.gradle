@@ -47,11 +47,7 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
     implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:$jacksonVersion")
-
-    implementation "io.arrow-kt:arrow-core:0.10.4"
-    implementation "io.arrow-kt:arrow-syntax:0.10.4"
-    kapt "io.arrow-kt:arrow-meta:0.10.4"
-
+    
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
